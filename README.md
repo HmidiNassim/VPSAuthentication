@@ -442,7 +442,7 @@ The general logic will be that we will want to authenticate each incoming reques
 
 ## UnitTest
 
-Here is how we would make a request from console App:
+Here is how we would make a request:
 
 ```
         [TestMethod]
