@@ -172,7 +172,7 @@ Configuration header .
 	
 
 ```
-UserRepository
+User Repository
 
 ```
 
@@ -440,7 +440,7 @@ The general logic will be that we will want to authenticate each incoming reques
 ```
 
 
-## Web API 2 Console Client for Test
+## Web API 2 Client for Test
 
 Here is how we would make a request from console App:
 
