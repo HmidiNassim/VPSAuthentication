@@ -41,15 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HttpClient\HttpClientRequest.cs" />
-    <Compile Include="Models\AuthRepository.cs" />
-    <Compile Include="Models\IAuthRepository.cs" />
+    <Compile Include="Models\UserRepository.cs" />
+    <Compile Include="Models\IUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\CanonicalRequest.cs" />
     <Compile Include="Providers\ICreateCanonicalRequest.cs" />
     <Compile Include="Providers\RestAuthentication.cs" />
-    <Compile Include="Signature\CalculSignature.cs" />
+    <Compile Include="Signature\CalculateSignature.cs" />
     <Compile Include="Signature\Configuration.cs" />
-    <Compile Include="Signature\ICalculSignature.cs" />
+    <Compile Include="Signature\ICalculateSignature.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

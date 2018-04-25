@@ -1,6 +1,6 @@
 ﻿namespace VPSAuthentication.Common.Signature
 {
-    public interface ICalculSignature
+    public interface ICalculateSignature
     {
         string Signature(string secret, string value);
     }

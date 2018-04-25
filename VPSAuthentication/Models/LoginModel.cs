@@ -2,6 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
+    //LoginModel uses to validate the model passed in post to the AuthenticateController
     public class LoginModel
     {
         [Required]

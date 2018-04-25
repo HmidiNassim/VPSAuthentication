@@ -10,7 +10,7 @@
     {
         /// <summary>
         /// https://docs.aws.amazon.com/fr_fr/general/latest/gr/sigv4-create-canonical-request.html
-        /// Exemple pseudo-code de la demande canonique :
+        /// Example pseudo-code of the canonical requeste :
         /// CanonicalRequest =
         ///  HTTPRequestMethod + '\n' +
         /// CanonicalURI + '\n' +
@@ -35,34 +35,26 @@
             }
             DateTime date = requestMessage.Headers.Date.Value.UtcDateTime;
 
-            /* le body c'est vide dans conten toujours  null
-            string ContentType = requestMessage.Content==null ||requestMessage.Content.Headers.ContentType==null ? ""
-                : requestMessage.Content.Headers.ContentType.MediaType;
-                */
             if (!requestMessage.Headers.Contains(Configuration.HeaderSignatureName))
             {
                 return null;
             }
 
-            //email il est en base64 dans le header
             string email = requestMessage.Headers
                 .GetValues(Configuration.HeaderSignatureName).First();
 
             string httpMethod = requestMessage.Method.Method + "\n";
             string CanonicalURI = requestMessage.RequestUri.AbsoluteUri + "\n";
-            //string CanonicalQueryString = "";
-            string CanonicalHeaders = date.ToString(CultureInfo.InvariantCulture) + ";" + email + "\n";//ContentType+";"+ date.ToString(CultureInfo.InvariantCulture)+ ";"+email + "\n";
-            string SignedHeaders = "date;" + Configuration.HeaderSignatureName.ToLower() + "\n";// "content-type;date;" + Configuration.HeaderSignatureName.ToLower()+ "\n";
-            //string RequestPayload = ""; 
+            string CanonicalHeaders = date.ToString(CultureInfo.InvariantCulture) + ";" + email.ToLower() + "\n";
+            string SignedHeaders = "date;" + Configuration.HeaderSignatureName.ToLower() + "\n";
 
-            // vous devrez peut-être ajouter plus d'en-têtes si c'est nécessaire pour des raisons de sécurité
             /// CanonicalRequest =
             ///  httpMethod + '\n' +
             /// CanonicalURI + '\n' +
-            /// CanonicalQueryString + '\n' +
             /// CanonicalHeaders + '\n' +
             /// SignedHeaders + '\n' +
-            /// HexEncode(Hash(RequestPayload))
+            /// HexEncode(Hash(RequestPayload)) no data in our case
+
             string canonicalRequest = String.Join("\n", httpMethod,
                 CanonicalURI,
                 CanonicalHeaders, SignedHeaders);

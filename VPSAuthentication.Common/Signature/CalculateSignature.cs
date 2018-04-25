@@ -5,7 +5,7 @@
     using System.Text;
 
 
-    public class CalculSignature : ICalculSignature
+    public class CalculateSignature : ICalculateSignature
     {
         public string Signature(string secret, string value)
         {

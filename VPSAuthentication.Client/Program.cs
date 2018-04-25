@@ -11,8 +11,8 @@
         static void Main(string[] args)
         {
 
-            HttpClientRequest httpClientRequest = new HttpClientRequest(new AuthRepository(),
-                               new CanonicalRequest(), new CalculSignature());
+            HttpClientRequest httpClientRequest = new HttpClientRequest(new UserRepository(),
+                               new CanonicalRequest(), new CalculateSignature());
             httpClientRequest.Email = "vps@gmail.com";
 
             var client = new HttpClient(httpClientRequest);

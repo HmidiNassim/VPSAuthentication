@@ -21,6 +21,7 @@
             );
 
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
+            //Appliquer le CamelCase pour les objets JSON renvoyés par les appels d'API.
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }

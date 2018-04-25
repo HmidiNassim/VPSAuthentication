@@ -8,26 +8,14 @@
 
     public class ConfidentialsController : ApiController
     {
-        // GET api/Confidentials : email dans le header ou en param puis on ajoute un champs email dans RestAuthentication et  
+        // GET api/Confidentials : EMail in header : VPS-Token:email
+        //  
         [HttpGet, Route("api/confidentials")]
         public bool Confidentials()
         {
-            RestAuthentication restAuthentication = new RestAuthentication(new AuthRepository(),
-                               new CanonicalRequest(), new CalculSignature());
+            RestAuthentication restAuthentication = new RestAuthentication(new UserRepository(),
+                               new CanonicalRequest(), new CalculateSignature());
             return restAuthentication.IsAuthenticated(this.Request);
         }
-
-        /*
-         * //fonctionne pas car il faut changer  RestAuthentication pour accepter en param l'email et remplacer le code qui récupere l'mail du header par le param
-        // GET api/Confidentials/email : email dans le header ou en param puis on ajoute un champs email dans RestAuthentication et  
-        [HttpGet, Route("api/confidentials/{email}")]
-        public bool Confidentials(string email)
-        {
-            RestAuthentication restAuthentication = new RestAuthentication(new AuthRepository(),
-                               new CanonicalRequest(), new CalculSignature(),email);
-            return restAuthentication.IsAuthenticated(this.Request);
-        }
-        */
-
     }
 }

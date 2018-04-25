@@ -7,11 +7,11 @@
     public class AuthenticateController : ApiController
     {
 
-        private IAuthRepository _repo = null;
+        private IUserRepository _repo = null;
 
         public AuthenticateController()
         {
-            _repo = new AuthRepository();
+            _repo = new UserRepository();
 
         }
         // POST api/authenticate

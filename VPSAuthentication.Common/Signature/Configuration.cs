@@ -3,13 +3,9 @@
     public class Configuration
     {
         /// <summary>
-        /// VPS=Vente privé Signature
-        /// Token =mail en base64 / hash ...
+        /// Token = mail / hash ...
         /// </summary>
         public const string HeaderSignatureName = "VPS-Token";
-
-        // X-Amz-Date pour aws et pour le moment j'ai utilisé Date du header
-        //public const string HeaderDateName = "X-Vp-Date";
        
         public const string Schema = "VPS-HMAC-SHA256";
 
