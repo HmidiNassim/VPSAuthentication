@@ -16,7 +16,6 @@ namespace VPSAuthentication
             HttpConfiguration config = new HttpConfiguration();
 
             WebApiConfig.Register(config);
-            //FormatterConfig.Register(config);
             app.UseWebApi(config);
         }
     }
