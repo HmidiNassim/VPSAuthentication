@@ -440,7 +440,7 @@ The general logic will be that we will want to authenticate each incoming reques
 ```
 
 
-## Web API 2 Client for Test
+## UnitTest
 
 Here is how we would make a request from console App:
 
