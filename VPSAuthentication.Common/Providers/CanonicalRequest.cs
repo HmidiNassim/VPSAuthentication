@@ -20,31 +20,31 @@
         /// HexEncode(Hash(RequestPayload))
         /// </summary>
         /// <returns></returns>
-        public string CreateCanonicalRequest(HttpRequestMessage requestMessage)
+        public string CreateCanonicalRequest(HttpRequestMessage httpRequestMessage)
         {
-            bool valid = IsRequestValid(requestMessage);
+            bool valid = IsRequestValid(httpRequestMessage);
             if (!valid)
             {
                 return null;
             }
 
             //https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Date
-            if (!requestMessage.Headers.Date.HasValue)
+            if (!httpRequestMessage.Headers.Date.HasValue)
             {
                 return null;
             }
-            DateTime date = requestMessage.Headers.Date.Value.UtcDateTime;
+            DateTime date = httpRequestMessage.Headers.Date.Value.UtcDateTime;
 
-            if (!requestMessage.Headers.Contains(Configuration.HeaderSignatureName))
+            if (!httpRequestMessage.Headers.Contains(Configuration.HeaderSignatureName))
             {
                 return null;
             }
 
-            string email = requestMessage.Headers
+            string email = httpRequestMessage.Headers
                 .GetValues(Configuration.HeaderSignatureName).First();
 
-            string httpMethod = requestMessage.Method.Method + "\n";
-            string CanonicalURI = requestMessage.RequestUri.AbsoluteUri + "\n";
+            string httpMethod = httpRequestMessage.Method.Method + "\n";
+            string CanonicalURI = httpRequestMessage.RequestUri.AbsoluteUri + "\n";
             string CanonicalHeaders = date.ToString(CultureInfo.InvariantCulture) + ";" + email.ToLower() + "\n";
             string SignedHeaders = "date;" + Configuration.HeaderSignatureName.ToLower() + "\n";
 

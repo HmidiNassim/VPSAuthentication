@@ -5,6 +5,6 @@
 
     public interface ICreateCanonicalRequest
     {
-        string CreateCanonicalRequest(HttpRequestMessage requestMessage);
+        string CreateCanonicalRequest(HttpRequestMessage httpRequestMessage);
     }
 }

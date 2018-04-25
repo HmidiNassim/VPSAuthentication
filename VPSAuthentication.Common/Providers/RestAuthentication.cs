@@ -12,8 +12,8 @@
     public class RestAuthentication
     {
 
-        private readonly IUserRepository _authRepository;
-        private readonly ICreateCanonicalRequest _canonicalRequest;
+        private readonly IUserRepository _userRepository;
+        private readonly ICreateCanonicalRequest _createCanonicalRequest;
         private readonly ICalculateSignature _calculSignature;
 
 
@@ -21,8 +21,8 @@
             ICreateCanonicalRequest canonicalRequest,
             ICalculateSignature calculSignature)
         {
-            _authRepository = authRepository;
-            _canonicalRequest = canonicalRequest;
+            _userRepository = authRepository;
+            _createCanonicalRequest = canonicalRequest;
             _calculSignature = calculSignature;
         }
 
@@ -42,7 +42,7 @@
             //AccessToken= mail passed in the header
             string mail = requestMessage.Headers.GetValues(Configuration.HeaderSignatureName)
                                     .First();
-            var accessToken = _authRepository.GenerateAccessTokenUser(mail);
+            var accessToken = _userRepository.GenerateAccessTokenUser(mail);
             if (accessToken == null)
             {
                 return false;
@@ -55,7 +55,7 @@
             }
 
             //create CanonicalRequest 
-            var canonicalRequest = _canonicalRequest.CreateCanonicalRequest(requestMessage);
+            var canonicalRequest = _createCanonicalRequest.CreateCanonicalRequest(requestMessage);
             if (canonicalRequest == null)
             {
                 return false;

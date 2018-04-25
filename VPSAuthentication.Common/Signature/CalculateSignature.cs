@@ -7,9 +7,9 @@
 
     public class CalculateSignature : ICalculateSignature
     {
-        public string Signature(string secret, string value)
+        public string Signature(string key, string value)
         {
-            var secretBytes = Encoding.UTF8.GetBytes(secret);
+            var secretBytes = Encoding.UTF8.GetBytes(key);
             var valueBytes = Encoding.UTF8.GetBytes(value);
             string signature;
 
