@@ -1,4 +1,4 @@
-# Processus de signature Signature Amazon Version 4 in  Web API 2 
+# Processus de Signature Amazon Version 4 in  Web API 2 
 
 
 In this article, I will show you how to write an example implementation AWS Auhentification for ASP.NET Web API 2 with simple objects. The project will include both the server side and the client side (using the HttpClient bits of the Web API).
